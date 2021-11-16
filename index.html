@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Traffic Light</title>
     <style>
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         .light {
             width: 33.33%;
             height: 55%;
@@ -45,9 +45,24 @@
 <body>
     <div class="container">
         <div class="light red" color="red"></div>
-        <div class="light yellow" color="yellow"></div>
-        <div class="light green" color="green"></div>
+        <div class="light" color="yellow"></div>
+        <div class="light" color="green"></div>
     </div>
+    <script>
+        const lights = document.querySelectorAll('.light');
+        let activeLight = 0;
+        setInterval(changeLight, 1000);
+        function changeLight() {
+            lights[activeLight].className = 'light';
+            activeLight++;
+            if (activeLight > 2) {
+                activeLight = 0;
+            }
+            // console.log("masukkkkk");
+            const currentLight = lights[activeLight];
+            currentLight.classList.add(currentLight.getAttribute('color'));
+        }
+    </script>
 </body>
 
 </html>
